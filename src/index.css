@@ -13,7 +13,8 @@ body {
 }
 
 .btn {
-    @apply font-bold h-[48px] px-[24px] rounded;
+    @apply font-bold h-[48px] px-[24px];
+    border-radius: 8px;
 }
 .btn:hover {
     @apply opacity-80;
@@ -26,4 +27,8 @@ a.btn {
 }
 .btn-outline {
     @apply bg-white text-gray border border-gray-300;
+}
+
+.leading-extra {
+    line-height: 94px;
 }

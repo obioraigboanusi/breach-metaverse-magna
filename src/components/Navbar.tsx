@@ -1,11 +1,11 @@
+import Logo from '@assets/Logo';
 import { Link } from 'react-router-dom';
-import Logo from '../assets/Logo';
 
 function Navbar() {
     return (
         <nav className="bg-[#FCFAFF]">
-            <div className="container">
-                <div className="flex justify-between items-center py-3">
+            <div className="container  py-[36px]">
+                <div className="flex justify-between items-center">
                     <div>
                         <Link to="/">
                             <Logo />
