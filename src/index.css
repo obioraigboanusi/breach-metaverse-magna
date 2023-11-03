@@ -1,3 +1,29 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.container {
+    @apply w-[90vw] max-w-[1184px] mx-auto;
+}
+
+.btn {
+    @apply font-bold h-[48px] px-[24px] rounded;
+}
+.btn:hover {
+    @apply opacity-80;
+}
+a.btn {
+    @apply inline-flex items-center;
+}
+.btn-primary {
+    @apply bg-primary text-white;
+}
+.btn-outline {
+    @apply bg-white text-gray border border-gray-300;
+}
