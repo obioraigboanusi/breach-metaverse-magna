@@ -1,7 +1,9 @@
 import Navbar from '@components/Navbar';
 import hello from '@assets/welcome.png';
+import { useNavigate } from 'react-router-dom';
 
 function Welcome() {
+    const navigate = useNavigate();
     return (
         <section className="welcome">
             <Navbar />
@@ -18,7 +20,9 @@ function Welcome() {
                         <p className="mb-5 max-w-[432px] mx-auto">
                             Just a few quick questions to help personalise your Breach experience. Are you ready?
                         </p>
-                        <button className="btn bg-gray text-white z-50 relative">Let’s begin!</button>
+                        <button onClick={() => navigate('/user/interests')} className="btn bg-gray text-white z-50 relative">
+                            Let’s begin!
+                        </button>
                     </div>
                 </div>
             </div>

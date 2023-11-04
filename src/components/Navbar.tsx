@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 function Navbar() {
     const { pathname } = useLocation();
-    const isAuthPath = pathname.includes('/auth/');
+    const isAuthPath = ['/auth/', '/user/'].some((item) => pathname.includes(item));
 
     return (
         <nav className={isAuthPath ? 'bg-white' : 'bg-[#FCFAFF]'}>
