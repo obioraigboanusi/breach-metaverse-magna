@@ -46,10 +46,10 @@ a.btn {
     @apply absolute z-[35] top-[35%] left-[-100%] w-[267px];
 }
 .message > div {
-    @apply bg-primary-400 text-white p-4 rounded-3xl relative z-[38];
+    @apply bg-primary-400 text-white p-3 rounded-3xl relative z-[38];
 }
 .message::before {
-    @apply absolute  bottom-[6px] right-[-28px] w-[30px] h-[40px] bg-white rounded-full z-[27];
+    @apply absolute  bottom-[1px] right-[-28px] w-[30px] h-[40px] bg-white rounded-full z-[27];
     content: '';
 }
 .message::after {
