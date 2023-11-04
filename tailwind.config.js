@@ -8,6 +8,7 @@ export default {
                     DEFAULT: '#8311F9',
                     700: '#6215F2',
                     600: '#8311F9',
+                    400: '#A940FF',
                     200: '#CF94FF',
                 },
                 gray: {

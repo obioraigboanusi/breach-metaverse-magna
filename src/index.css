@@ -32,3 +32,27 @@ a.btn {
 .leading-extra {
     line-height: 94px;
 }
+.welcome::after {
+    content: '';
+    /* display: block; */
+    background: url(https://s3-alpha-sig.figma.com/img/be37/ace1/f1497a79c88053634b2c427c481ef783?Expires=1699833600&Signature=N3EugLJXcuAnbaoE1ECj4Pcjyduo6n2sNedTxnvDC-G9eigpvHA2Q9z3rp9cGirOcqe118k2bQoTcJoIB2tLaMRKimHtOwbLE~9ctdAyEGbOe1h~iH82OAWHG9Vaa1gq04wLqjogltfmmR4WFJUNxobMotYWyFqv1fS0S8FFNEcQEo0sxNWjTIuXPg2byR1lO4rsNQ-jK0xeUD2hkoOSNVMtEL4iccT88YtvYVTEjdI6EGiYR4VOvj1E-ttH2IaGlLpf9zWU8h7J8xQQvP5r1OAgDokAe92I4huAExXmYFbt39~ubJztzcm0EwNIbd16nlhXv~kzJ3VV5K65O1KuVA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
+    background-repeat: no-repeat;
+    background-position: center 100%;
+    background-size: 60% auto;
+    @apply absolute z-40 top-0 left-0 w-full h-full;
+}
+
+.message {
+    @apply absolute z-[35] top-[35%] left-[-100%] w-[267px];
+}
+.message > div {
+    @apply bg-primary-400 text-white p-4 rounded-3xl relative z-[38];
+}
+.message::before {
+    @apply absolute  bottom-[6px] right-[-28px] w-[30px] h-[40px] bg-white rounded-full z-[27];
+    content: '';
+}
+.message::after {
+    @apply absolute bottom-[-0px] right-[-15px] w-[30px] h-[30px] bg-primary-400 rounded-full border z-[26];
+    content: '';
+}

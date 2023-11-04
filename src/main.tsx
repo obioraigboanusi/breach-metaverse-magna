@@ -5,6 +5,7 @@ import './index.css';
 import Landing from './pages/Landing';
 import Register from '@pages/Register';
 import Login from '@pages/Login';
+import Welcome from '@pages/Welcome';
 
 const router = createBrowserRouter([
     {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
     {
         path: '/auth/register',
         element: <Register />,
+    },
+    {
+        path: '/auth/welcome',
+        element: <Welcome />,
     },
 ]);
 

@@ -17,7 +17,7 @@ function Register() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid },
     } = useForm({
         resolver: yupResolver(loginSchema),
         defaultValues: {
@@ -75,7 +75,11 @@ function Register() {
                                     {errors.password && <p className="text-xs text-red-600 mt-1">{errors.password.message}</p>}
                                 </div>
                                 <div>
-                                    <button type="submit" className="w-full btn bg-gray text-white">
+                                    <button
+                                        type="submit"
+                                        disabled={!isValid}
+                                        className="w-full btn bg-gray text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
+                                    >
                                         Continue
                                     </button>
                                     <p className="mt-3 text-center">
