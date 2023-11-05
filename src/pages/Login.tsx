@@ -1,9 +1,12 @@
-import GoBack from '@components/GoBack';
-import Navbar from '@components/Navbar';
-import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { toast } from 'react-toastify';
+import GoBack from '@components/GoBack';
+import Navbar from '@components/Navbar';
+
+import { useUserLogin } from '@hooks/useAuthServices';
 
 const loginSchema = yup
     .object()
@@ -26,7 +29,17 @@ function Login() {
             email: '',
         },
     });
-    const onSubmit = handleSubmit(async ({ email, password }) => {});
+    const { mutateAsync } = useUserLogin();
+
+    const onSubmit = handleSubmit(async ({ email, password }) => {
+        try {
+            const res = await mutateAsync({ email, password });
+            navigate('/user/home');
+        } catch (error) {
+            toast.error(error?.response?.data?.message || 'Failed to login. Please try again.');
+        }
+    });
+
     return (
         <div>
             <Navbar />
