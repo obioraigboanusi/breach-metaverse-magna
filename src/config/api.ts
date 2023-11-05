@@ -1,3 +1,4 @@
+import tokenService from '@services/token.service';
 import axios from 'axios';
 
 const api = axios.create({
@@ -5,7 +6,7 @@ const api = axios.create({
 });
 
 api.interceptors.request.use((config) => {
-    const token: string = JSON.parse(JSON.stringify(localStorage.getItem('token')));
+    const token: string = tokenService.getToken();
 
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
