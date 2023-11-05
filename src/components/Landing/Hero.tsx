@@ -10,7 +10,7 @@ function Hero() {
                             Find <span className="text-primary-700">Great</span> <br /> Ideas
                         </h1>
                         <p className="mb-10 leading-normal text-2xl ">Subscribe to your favourite creators and thinkers. Support work that matters</p>
-                        <Link to="register" className="btn btn-primary min-h-[69.176px]">
+                        <Link to="/auth/register" className="btn btn-primary min-h-[69.176px]">
                             Join Breach
                         </Link>
                     </div>

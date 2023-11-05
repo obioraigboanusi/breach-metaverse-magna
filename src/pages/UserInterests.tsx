@@ -1,13 +1,12 @@
 import Category from '@components/Category';
 import GoBack from '@components/GoBack';
 import Navbar from '@components/Navbar';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function UserInterests() {
     const navigate = useNavigate();
     return (
-        <section className="">
+        <section className="pb-[50px]">
             <Navbar />
             <div className="container pt-[50px]">
                 <GoBack />
@@ -30,10 +29,12 @@ function UserInterests() {
                     </ul>
                 </div>
                 <div className="flex flex-col items-center mt-[40px]">
-                    <button onClick={() => navigate('/user/interests')} className="btn bg-gray text-white z-50  mb-3">
+                    <button onClick={() => navigate('/user/home')} className="btn bg-gray text-white z-50  mb-3">
                         Next
                     </button>
-                    <button className="">Skip for later</button>
+                    <button onClick={() => navigate('/user/home')} className="">
+                        Skip for later
+                    </button>
                 </div>
             </div>
         </section>
