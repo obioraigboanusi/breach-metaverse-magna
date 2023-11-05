@@ -1,33 +1,15 @@
 import ArrowUp from '@assets/ArrowUp';
-import Category from '@components/Category';
+import Categories from '@components/Categories';
 import PostList from '@components/PostList';
 
-const categories = [
-    ' Humor',
-    'Lifehacks',
-    'Crypto',
-    'Art',
-    'Travel',
-    'Sports',
-    'Photography',
-    'Food and drink',
-    'History',
-    'Science',
-    'News',
-    'Business',
-    'Music',
-    'Tech',
-    'Faith & Spirituality',
-    'Nature',
-];
+const scrollToTop = () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Optional: smooth scrolling animation
+    });
+};
 
 function Posts() {
-    const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth', // Optional: smooth scrolling animation
-        });
-    };
     return (
         <section className="bg-white py-[60px] mb-[250px]">
             <div className="container relative">
@@ -40,13 +22,7 @@ function Posts() {
                             <h2 className="font-semibold text-gray text-3xl mb-1">Categories</h2>
                             <p className="mb-4">Discover content from topics you care about</p>
                         </header>
-                        <ul className="flex flex-wrap gap-[20px]">
-                            {categories.map((category) => (
-                                <li key={category}>
-                                    <Category category={category} />
-                                </li>
-                            ))}
-                        </ul>
+                        <Categories />
                     </div>
                 </div>
                 <div className="absolute bottom-[2rem] right-[1rem]">
