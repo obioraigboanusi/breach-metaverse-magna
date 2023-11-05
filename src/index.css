@@ -56,3 +56,12 @@ a.btn {
     @apply absolute bottom-[-0px] right-[-15px] w-[30px] h-[30px] bg-primary-400 rounded-full border z-[26];
     content: '';
 }
+.post-card.grid {
+    grid-template-columns: 268px 1fr;
+}
+.dash-posts .post-card.grid {
+    grid-template-columns: 186px 1fr;
+}
+.dash-posts > ul {
+    gap: 60px;
+}

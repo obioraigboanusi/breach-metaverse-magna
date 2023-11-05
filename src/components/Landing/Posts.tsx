@@ -1,7 +1,6 @@
 import ArrowUp from '@assets/ArrowUp';
 import Category from '@components/Category';
-import PostCard from '@components/PostCard';
-import Tabs, { ITab } from '@components/Tabs';
+import PostList from '@components/PostList';
 
 const categories = [
     ' Humor',
@@ -21,11 +20,6 @@ const categories = [
     'Faith & Spirituality',
     'Nature',
 ];
-const tabs: ITab[] = [
-    { label: 'Featured', value: 'featured' },
-    { label: 'Popular', value: 'popular' },
-    { label: 'Recent', value: 'recent' },
-];
 
 function Posts() {
     const scrollToTop = () => {
@@ -39,14 +33,7 @@ function Posts() {
             <div className="container relative">
                 <div className="grid grid-cols-3 gap-4">
                     <div className="col-span-3 lg:col-span-2">
-                        <Tabs name="tab" tabs={tabs} />
-                        <ul className="grid grid-cols-1 gap-[64px] mt-[40px]">
-                            {Array.from({ length: 10 }).map(() => (
-                                <li>
-                                    <PostCard />
-                                </li>
-                            ))}
-                        </ul>
+                        <PostList />
                     </div>
                     <div>
                         <header>

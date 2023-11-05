@@ -2,9 +2,9 @@ import postImage from '@assets/post.png';
 
 function PostCard() {
     return (
-        <div className="flex gap-[28px] w-full">
-            <div className="w-[90%] max-w-[266px] rounded-2xl border border-gray-300">
-                <img src={postImage} alt="" className="w-full max-h-[184px] object-cover object-center rounded-2xl" />
+        <div className="post-card grid gap-[28px]">
+            <div className="h-[186px] rounded-2xl border border-gray-300">
+                <img src={postImage} alt="" className="w-full h-full max-h-[184px] object-cover object-center rounded-2xl" />
             </div>
             <div className="">
                 <p className="uppercase mb-4 text-sm text-gray-600">Work in Progress</p>

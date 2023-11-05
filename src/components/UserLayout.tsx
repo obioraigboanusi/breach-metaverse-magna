@@ -4,11 +4,15 @@ import Sidebar from './Dashboard.tsx/Sidebar';
 function UserLayout() {
     return (
         <div className="grid grid-cols-[292px_1fr] min-h-screen">
-            <div className="border border-gray-200">
-                <Sidebar />
+            <div className="border-r border-gray-200">
+                <div className="sticky top-0">
+                    <Sidebar />
+                </div>
             </div>
             <div className="">
-                <Outlet />
+                <div className="relative">
+                    <Outlet />
+                </div>
             </div>
         </div>
     );
