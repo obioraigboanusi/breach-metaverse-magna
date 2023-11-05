@@ -21,7 +21,7 @@ function Login() {
     const {
         register,
         handleSubmit,
-        formState: { errors },
+        formState: { errors, isValid, isSubmitting },
     } = useForm({
         resolver: yupResolver(loginSchema),
         defaultValues: {
@@ -29,11 +29,14 @@ function Login() {
             email: '',
         },
     });
-    const { mutateAsync } = useUserLogin();
+    const { isLoading, mutateAsync } = useUserLogin();
 
     const onSubmit = handleSubmit(async ({ email, password }) => {
         try {
             const res = await mutateAsync({ email, password });
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('userId', JSON.stringify(res.userId));
+            toast.success('Logged in successfully');
             navigate('/user/home');
         } catch (error) {
             toast.error(error?.response?.data?.message || 'Failed to login. Please try again.');
@@ -80,8 +83,12 @@ function Login() {
                                     {errors.password && <p className="text-xs text-red-600 mt-1">{errors.password.message}</p>}
                                 </div>
                                 <div>
-                                    <button type="submit" className="w-full btn bg-gray text-white">
-                                        Log in
+                                    <button
+                                        type="submit"
+                                        className="w-full btn bg-gray text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
+                                        disabled={!isValid || isLoading || isSubmitting}
+                                    >
+                                        {isLoading || isSubmitting ? 'Processing...' : '  Log in'}
                                     </button>
                                     <p className="mt-3 text-center">
                                         Don't have an account already?
@@ -91,18 +98,6 @@ function Login() {
                                     </p>
                                 </div>
                             </form>
-                            {/* <div className="mt-[126px]">
-                                <p className="text-sm">
-                                    By signing up, you agree to Breach&apos;s{' '}
-                                    <Link to="/terms" className="text-primary font-medium">
-                                        Terms
-                                    </Link>
-                                    &
-                                    <Link to="/privacy-policy" className="text-primary font-medium">
-                                        Privacy Policy
-                                    </Link>
-                                </p>
-                            </div> */}
                         </div>
                     </div>
                 </div>

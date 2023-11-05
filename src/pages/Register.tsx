@@ -1,7 +1,9 @@
 import GoBack from '@components/GoBack';
 import Navbar from '@components/Navbar';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useUserRegister } from '@hooks/useAuthServices';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 
@@ -18,7 +20,7 @@ function Register() {
     const {
         register,
         handleSubmit,
-        formState: { errors, isValid },
+        formState: { errors, isValid, isSubmitting },
     } = useForm({
         resolver: yupResolver(loginSchema),
         defaultValues: {
@@ -26,8 +28,19 @@ function Register() {
             email: '',
         },
     });
+
+    const { isLoading, mutateAsync } = useUserRegister();
+
     const onSubmit = handleSubmit(async ({ email, password }) => {
-        navigate('/user/welcome');
+        try {
+            const res = await mutateAsync({ email, password });
+            localStorage.setItem('token', res.token);
+            localStorage.setItem('userId', JSON.stringify(res.userId));
+            toast.success('Registered successfully');
+            navigate('/user/welcome');
+        } catch (error) {
+            toast.error(error?.response?.data?.message || 'Failed to sign up. Please try again.');
+        }
     });
     return (
         <div>
@@ -71,10 +84,10 @@ function Register() {
                                 <div>
                                     <button
                                         type="submit"
-                                        disabled={!isValid}
+                                        disabled={!isValid || isLoading || isSubmitting}
                                         className="w-full btn bg-gray text-white disabled:bg-gray-300 disabled:cursor-not-allowed"
                                     >
-                                        Continue
+                                        {isLoading || isSubmitting ? 'Processing...' : 'Continue'}
                                     </button>
                                     <p className="mt-3 text-center">
                                         Already have an account?
