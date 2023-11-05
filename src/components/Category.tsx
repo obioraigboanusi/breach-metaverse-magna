@@ -1,10 +1,8 @@
-type ICategory = { category: string };
-
-function Category({ category }: ICategory) {
+function Category({ category }: { category: ICategory }) {
     return (
         <div className="px-3 flex items-center text-sm gap-3 border border-gray-100 rounded-lg h-[38px]">
-            <span> 😃</span>
-            <span className="font-medium">{category}</span>
+            <span>{category.icon}</span>
+            <span className="font-medium">{category.name}</span>
         </div>
     );
 }
