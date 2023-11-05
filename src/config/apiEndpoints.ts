@@ -3,7 +3,7 @@ const apiEndpoints = {
     REGISTER: 'auth/register',
     CATEGORIES: 'blog/categories',
     POSTS: 'blog/posts',
-    USER_INTERESTS: (userId: string) => `users/${userId}/interests`,
+    USER_INTERESTS: (userId: number) => `users/${userId}/interests`,
 };
 
 export default apiEndpoints;
