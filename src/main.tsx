@@ -7,13 +7,16 @@ import router from '@routes';
 
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
+import AuthProvider from '@components/AuthProvider';
 
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <RouterProvider router={router} />
+            <AuthProvider>
+                <RouterProvider router={router} />
+            </AuthProvider>
             <ToastContainer
                 position="top-right"
                 autoClose={5000}
