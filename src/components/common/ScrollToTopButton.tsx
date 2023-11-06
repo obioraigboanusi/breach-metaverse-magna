@@ -29,7 +29,7 @@ function ScrollToTopButton() {
     return (
         <div className="container py-0 relative">
             {showBtn && (
-                <div className="fixed bottom-[200px] right-[190px]">
+                <div className="fixed bottom-[180px] right-[9%]">
                     <button
                         onClick={scrollToTop}
                         className="h-[60px] w-[60px] rounded-full bg-primary-200 flex justify-center items-center hover:opacity-75 hover:-translate-y-[2px]"

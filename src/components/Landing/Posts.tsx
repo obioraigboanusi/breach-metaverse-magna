@@ -6,10 +6,10 @@ function Posts() {
         <section className="bg-white py-[60px] mb-[250px]">
             <div className="container relative">
                 <div className="grid grid-cols-3 gap-4">
-                    <div className="col-span-3 lg:col-span-2 relative">
+                    <div className="col-span-3 lg:col-span-2  relative">
                         <PostList />
                     </div>
-                    <div>
+                    <div className="col-span-3 lg:col-span-1 order-first lg:order-last">
                         <div className="">
                             <header>
                                 <h2 className="font-semibold text-gray text-3xl mb-1">Categories</h2>

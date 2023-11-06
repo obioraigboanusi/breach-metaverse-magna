@@ -5,9 +5,22 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    /* Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    .no-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+}
+
 body {
     font-family: 'Inter', sans-serif;
     line-height: 1.5;
+    letter-spacing: -0.16px;
 }
 
 .container {
@@ -57,11 +70,13 @@ a.btn {
     @apply absolute bottom-[-0px] right-[-15px] w-[30px] h-[30px] bg-primary-400 rounded-full border z-[26];
     content: '';
 }
-.post-card.grid {
-    grid-template-columns: 268px 1fr;
-}
-.dash-posts .post-card.grid {
-    grid-template-columns: 186px 1fr;
+@media (min-width: 768px) {
+    .post-card.grid {
+        grid-template-columns: 268px 1fr;
+    }
+    .dash-posts .post-card.grid {
+        grid-template-columns: 186px 1fr;
+    }
 }
 
 .dash-posts > ul {

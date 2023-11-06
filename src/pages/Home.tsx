@@ -4,8 +4,8 @@ import StreamPosts from '@components/blog/StreamPosts';
 
 function Dashboard() {
     return (
-        <div className="grid grid-cols-[1fr_404px]">
-            <div className="px-[36px] py-[41px]">
+        <div className="grid grid-cols-[1fr_404px] h-screen overflow-hidden">
+            <div className="px-[36px] py-[41px] overflow-y-auto no-scrollbar">
                 <div className="relative">
                     <header className="mb-[18px]">
                         <h1 className="text-[28px] font-bold">Top Picks</h1>
@@ -25,8 +25,8 @@ function Dashboard() {
                 </div>
             </div>
 
-            <aside className="px-[28px] border border-gray-200">
-                <div className="sticky top-[1px] py-[41px]">
+            <aside className="px-[28px] border border-gray-200 overflow-y-auto no-scrollbar">
+                <div className="py-[41px]">
                     <header className="pb-[24px] mb-[24px] border-b border-[#EDEDED]">
                         <h2 className="font-semibold text-[28px] text-gray mb-1">Streams</h2>
                         <p className="text-gray-600 font-grotesk">Discover trending content from topics you care about in real time</p>

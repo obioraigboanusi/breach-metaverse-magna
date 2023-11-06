@@ -10,13 +10,13 @@ function Footer() {
     return (
         <footer className="bg-white border-t border-gray-100">
             <div className="container">
-                <div className="flex justify-between items-center h-[104px]">
+                <div className="flex flex-col md:flex-row md:justify-between items-center gap-[20px] min-h-[104px] py-[50px] md:py-0">
                     <div>
                         <Logo />
                     </div>
                     <div>
                         <nav>
-                            <ul className="flex gap-[40px] items-center">
+                            <ul className="flex flex-col md:flex-row gap-[40px] items-center">
                                 <li>
                                     <a href="mailto:support@breach.example" className="text-primary">
                                         support@breach.example
