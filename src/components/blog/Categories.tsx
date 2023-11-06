@@ -7,9 +7,10 @@ import { debounce } from 'lodash';
 function Categories() {
     const { data: categories, isLoading } = useGetCategories();
     const [params, setParams] = useSearchParams();
-    const [selectedCategory, setSelectedCategory] = useState<number>();
 
     const activeCategory = params.get('category') || undefined;
+
+    const [selectedCategory, setSelectedCategory] = useState<number | undefined>(activeCategory ? +activeCategory : undefined);
 
     const setFilterPosts = debounce((id: number) => {
         if (!!activeCategory && +activeCategory === id) {
@@ -18,7 +19,7 @@ function Categories() {
             params.set('category', id.toString());
         }
         setParams(params);
-    }, 500);
+    }, 200);
 
     const handleChange = (id: number) => {
         setSelectedCategory(id);
@@ -29,7 +30,7 @@ function Categories() {
         <>
             <ul className="flex flex-wrap gap-[20px]">
                 {isLoading
-                    ? Array.from({ length: 10 }).map((_, i) => <div className={` animate-pulse rounded-lg h-[38px] w-[25%] bg-gray-300`} />)
+                    ? Array.from({ length: 10 }).map(() => <div className={` animate-pulse rounded-lg h-[38px] w-[25%] bg-gray-300`} />)
                     : categories?.map((category: ICategory) => (
                           <li key={'category-item-' + category.id}>
                               <Category isSelected={category.id === selectedCategory} onSelect={handleChange} category={category} />

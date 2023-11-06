@@ -36,7 +36,7 @@ function Tabs({ tabs, name }: IProps) {
                     <li key={value}>
                         <button
                             className={[
-                                activeTab === value ? 'opacity-100 border-gray-900' : 'opacity-[0.64] border-transparent',
+                                activeTab === value ? 'opacity-100 border-gray-900' : 'opacity-[0.64] border-transparent font-grotesk',
                                 'border-b pb-3',
                             ].join(' ')}
                             onClick={() => handleSetTab(value)}

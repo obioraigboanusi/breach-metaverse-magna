@@ -21,6 +21,9 @@ export default {
                     100: '#C7C4BC', // abstract
                 },
             },
+            fontFamily: {
+                grotesk: ['Space Grotesk', 'sans-serif'],
+            },
         },
     },
     plugins: [],
