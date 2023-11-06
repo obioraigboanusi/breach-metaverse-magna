@@ -17,7 +17,7 @@ function StreamPosts() {
 
         socket.onmessage = (event) => {
             const message = JSON.parse(event.data);
-            setStreamPosts((prev) => [message, ...prev]);
+            setStreamPosts((prev) => [message, ...prev.slice(0, 4)]);
             // console.log('Received message:', message);
         };
 

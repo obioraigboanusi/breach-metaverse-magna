@@ -34,7 +34,6 @@ a.btn {
 }
 .welcome::after {
     content: '';
-    /* display: block; */
     background: url(https://s3-alpha-sig.figma.com/img/be37/ace1/f1497a79c88053634b2c427c481ef783?Expires=1699833600&Signature=N3EugLJXcuAnbaoE1ECj4Pcjyduo6n2sNedTxnvDC-G9eigpvHA2Q9z3rp9cGirOcqe118k2bQoTcJoIB2tLaMRKimHtOwbLE~9ctdAyEGbOe1h~iH82OAWHG9Vaa1gq04wLqjogltfmmR4WFJUNxobMotYWyFqv1fS0S8FFNEcQEo0sxNWjTIuXPg2byR1lO4rsNQ-jK0xeUD2hkoOSNVMtEL4iccT88YtvYVTEjdI6EGiYR4VOvj1E-ttH2IaGlLpf9zWU8h7J8xQQvP5r1OAgDokAe92I4huAExXmYFbt39~ubJztzcm0EwNIbd16nlhXv~kzJ3VV5K65O1KuVA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4);
     background-repeat: no-repeat;
     background-position: center 100%;

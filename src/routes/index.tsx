@@ -4,52 +4,58 @@ import Login from '@pages/Login';
 import Welcome from '@pages/Welcome';
 import UserInterests from '@pages/UserInterests';
 import Dashboard from '@pages/Home';
-import UserLayout from '@components/UserLayout';
+import UserLayout from '@components/layout/UserLayout';
 import Landing from '@pages/Landing';
-import AuthGuard from '@components/AuthGuard';
-import ValidateInterests from '@components/ValidateInterests';
+import AuthGuard from '@components/Auth/AuthGuard';
+import ValidateInterests from '@components/Auth/ValidateInterests';
+import ScrollToTop from '@components/common/ScrollToTop';
 
 const router = createBrowserRouter([
     {
-        path: '/',
-        element: <Landing />,
-    },
-    {
-        element: <AuthGuard />,
+        element: <ScrollToTop />,
         children: [
             {
-                path: '/auth/login',
-                element: <Login />,
+                path: '/',
+                element: <Landing />,
             },
             {
-                path: '/auth/register',
-                element: <Register />,
-            },
-            {
-                element: <ValidateInterests />,
+                element: <AuthGuard />,
                 children: [
                     {
-                        path: '/user/welcome',
-                        element: <Welcome />,
+                        path: '/auth/login',
+                        element: <Login />,
                     },
                     {
-                        path: '/user/interests',
-                        element: <UserInterests />,
+                        path: '/auth/register',
+                        element: <Register />,
                     },
                     {
-                        element: <UserLayout />,
+                        element: <ValidateInterests />,
                         children: [
                             {
-                                path: '/user/home',
-                                element: <Dashboard />,
+                                path: '/user/welcome',
+                                element: <Welcome />,
                             },
                             {
-                                path: '/user/dashboard',
-                                element: <div>Dashboard</div>,
+                                path: '/user/interests',
+                                element: <UserInterests />,
                             },
                             {
-                                path: '/user/publications',
-                                element: <div>Publications</div>,
+                                element: <UserLayout />,
+                                children: [
+                                    {
+                                        path: '/user/home',
+                                        element: <Dashboard />,
+                                    },
+                                    {
+                                        path: '/user/dashboard',
+                                        element: <div>Dashboard</div>,
+                                    },
+                                    {
+                                        path: '/user/publications',
+                                        element: <div>Publications</div>,
+                                    },
+                                ],
                             },
                         ],
                     },

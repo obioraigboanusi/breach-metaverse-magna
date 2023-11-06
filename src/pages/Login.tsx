@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
-import GoBack from '@components/GoBack';
-import Navbar from '@components/Navbar';
+import GoBack from '@components/common/GoBack';
+import Navbar from '@components/layout/Navbar';
 
 import { useUserLogin } from '@hooks/useAuthServices';
 import { useAuth } from '@hooks/useAuth';

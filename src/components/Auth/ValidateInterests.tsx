@@ -5,7 +5,7 @@ import { Navigate, Outlet, useLocation } from 'react-router-dom';
 function ValidateInterests() {
     const { userId } = useAuth();
     const { pathname, state } = useLocation();
-
+    console.log(pathname, state?.from);
     const shouldValidate = state?.from === '/auth/login' && pathname === '/user/home';
 
     const { data: interests, isLoading } = useGetUserInterests(userId, {
@@ -14,10 +14,6 @@ function ValidateInterests() {
 
     if (isLoading) {
         return <div>Loading</div>;
-    }
-
-    if (['/user/welcome', '/user/interests'].includes(pathname) && !['/auth/register', '/auth/login'].includes(state?.from)) {
-        return <Navigate to="/user/home" />;
     }
 
     if (shouldValidate && !(interests.length > 0)) {

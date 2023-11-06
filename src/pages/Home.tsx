@@ -1,6 +1,6 @@
 import banner from '@assets/user-banner.png';
-import PostList from '@components/PostList';
-import StreamPosts from '@components/StreamPosts';
+import PostList from '@components/blog/PostList';
+import StreamPosts from '@components/blog/StreamPosts';
 
 function Dashboard() {
     return (

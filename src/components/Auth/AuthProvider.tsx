@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react';
-import { AuthContext } from '../hooks/useAuth';
+import { AuthContext } from '../../hooks/useAuth';
 
 const AuthProvider = ({ children }) => {
     const [userId, setUserId] = useState<number>(JSON.parse(JSON.stringify(localStorage.getItem('userId'))));

@@ -7,7 +7,7 @@ import router from '@routes';
 
 import './index.css';
 import 'react-toastify/dist/ReactToastify.css';
-import AuthProvider from '@components/AuthProvider';
+import AuthProvider from '@components/Auth/AuthProvider';
 
 const queryClient = new QueryClient();
 

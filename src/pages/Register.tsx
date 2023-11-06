@@ -1,5 +1,5 @@
-import GoBack from '@components/GoBack';
-import Navbar from '@components/Navbar';
+import GoBack from '@components/common/GoBack';
+import Navbar from '@components/layout/Navbar';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useUserRegister } from '@hooks/useAuthServices';
 import { useForm } from 'react-hook-form';

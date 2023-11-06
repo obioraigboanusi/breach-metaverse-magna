@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import Category from '@components/Category';
-import GoBack from '@components/GoBack';
-import Navbar from '@components/Navbar';
+import Category from '@components/blog/Category';
+import GoBack from '@components/common/GoBack';
+import Navbar from '@components/layout/Navbar';
 import { useGetCategories } from '@hooks/useBlogServices';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '@hooks/useAuth';
@@ -37,6 +37,7 @@ function UserInterests() {
             toast.error(error?.response?.data?.message || 'Failed to login. Please try again.');
         }
     };
+
     return (
         <section className="pb-[50px]">
             <Navbar />
@@ -53,12 +54,15 @@ function UserInterests() {
                 </div>
                 <div className="mt-[40px] max-w-[732px] mx-auto">
                     <ul className="flex flex-wrap gap-[20px] justify-center">
-                        {categories?.map((category: ICategory) => (
-                            <li key={'interests-item' + category.id}>
-                                <Category category={category} isSelected={selectedCategories.includes(category.id)} onSelect={selectCategory} />
-                            </li>
-                        ))}
+                        {isLoading
+                            ? Array.from({ length: 10 }).map(() => <div className={` animate-pulse rounded-lg h-[38px] w-[25%] bg-gray-300`} />)
+                            : categories?.map((category: ICategory) => (
+                                  <li key={'interests-item' + category.id}>
+                                      <Category category={category} isSelected={selectedCategories.includes(category.id)} onSelect={selectCategory} />
+                                  </li>
+                              ))}
                     </ul>
+                    {categories?.length === 0 && <p className="text-sm text-grey-600">Categories will show here when available.</p>}
                 </div>
                 <div className="flex flex-col items-center mt-[40px]">
                     <button

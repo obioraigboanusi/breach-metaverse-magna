@@ -1,4 +1,4 @@
-import Navbar from '@components/Navbar';
+import Navbar from '@components/layout/Navbar';
 import hello from '@assets/welcome.png';
 import { useNavigate } from 'react-router-dom';
 

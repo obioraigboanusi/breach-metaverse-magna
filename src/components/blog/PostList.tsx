@@ -1,4 +1,4 @@
-import Tabs, { ITab } from '@components/Tabs';
+import Tabs, { ITab } from '@components/common/Tabs';
 import PostCard from './PostCard';
 import { useGetPosts } from '@hooks/useBlogServices';
 import { useSearchParams } from 'react-router-dom';

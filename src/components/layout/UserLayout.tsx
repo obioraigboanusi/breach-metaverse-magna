@@ -1,5 +1,5 @@
 import { Outlet } from 'react-router-dom';
-import Sidebar from './Dashboard.tsx/Sidebar';
+import Sidebar from './Sidebar';
 
 function UserLayout() {
     return (
