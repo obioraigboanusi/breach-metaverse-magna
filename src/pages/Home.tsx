@@ -25,8 +25,8 @@ function Dashboard() {
                 </div>
             </div>
 
-            <aside className="px-[28px] py-[41px] border border-gray-200">
-                <div className="relative">
+            <aside className="px-[28px] border border-gray-200">
+                <div className="sticky top-[1px] py-[41px]">
                     <header className="pb-[24px] mb-[24px] border-b border-[#EDEDED]">
                         <h2 className="font-semibold text-xl text-gray mb-1">Streams</h2>
                         <p className="text-gray-600">Discover trending content from topics you care about in real time</p>

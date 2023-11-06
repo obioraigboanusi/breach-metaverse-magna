@@ -62,6 +62,7 @@ a.btn {
 .dash-posts .post-card.grid {
     grid-template-columns: 186px 1fr;
 }
+
 .dash-posts > ul {
     gap: 60px;
 }

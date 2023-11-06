@@ -39,7 +39,7 @@ function StreamPosts() {
                     </li>
                 ))}
             </ul>
-            <div>{streamPosts.length === 0 && <p className="text-xs text-grey-600">Live posts will show here when available</p>}</div>
+            <>{streamPosts?.length === 0 && <p className="text-sm text-grey-600">Live posts will show here when available</p>}</>
         </>
     );
 }

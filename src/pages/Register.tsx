@@ -6,6 +6,8 @@ import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
 import { Link, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
+import tokenService from '@services/token.service';
+import { USER_ID_KEY } from '@config/constants';
 
 const loginSchema = yup
     .object()
@@ -34,8 +36,8 @@ function Register() {
     const onSubmit = handleSubmit(async ({ email, password }) => {
         try {
             const res = await mutateAsync({ email, password });
-            localStorage.setItem('token', res.token);
-            localStorage.setItem('userId', JSON.stringify(res.userId));
+            tokenService.saveToken(res.token);
+            localStorage.setItem(USER_ID_KEY, JSON.stringify(res.userId));
             toast.success('Registered successfully');
             navigate('/user/welcome');
         } catch (error) {
