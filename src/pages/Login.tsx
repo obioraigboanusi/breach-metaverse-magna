@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { toast } from 'react-toastify';
@@ -7,6 +7,7 @@ import GoBack from '@components/GoBack';
 import Navbar from '@components/Navbar';
 
 import { useUserLogin } from '@hooks/useAuthServices';
+import { useAuth } from '@hooks/useAuth';
 
 const loginSchema = yup
     .object()
@@ -30,6 +31,8 @@ function Login() {
         },
     });
     const { isLoading, mutateAsync } = useUserLogin();
+    const { setUserId } = useAuth();
+    const { pathname } = useLocation();
 
     const onSubmit = handleSubmit(async ({ email, password }) => {
         try {
@@ -37,7 +40,10 @@ function Login() {
             localStorage.setItem('token', res.token);
             localStorage.setItem('userId', JSON.stringify(res.userId));
             toast.success('Logged in successfully');
-            navigate('/user/home');
+            setUserId(res.userId);
+            navigate('/user/home', {
+                state: { from: pathname },
+            });
         } catch (error) {
             toast.error(error?.response?.data?.message || 'Failed to login. Please try again.');
         }

@@ -4,10 +4,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useUserRegister } from '@hooks/useAuthServices';
 import { useForm } from 'react-hook-form';
 import { toast } from 'react-toastify';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as yup from 'yup';
 import tokenService from '@services/token.service';
 import { USER_ID_KEY } from '@config/constants';
+import { useAuth } from '@hooks/useAuth';
 
 const loginSchema = yup
     .object()
@@ -32,6 +33,8 @@ function Register() {
     });
 
     const { isLoading, mutateAsync } = useUserRegister();
+    const { setUserId } = useAuth();
+    const { pathname } = useLocation();
 
     const onSubmit = handleSubmit(async ({ email, password }) => {
         try {
@@ -39,11 +42,15 @@ function Register() {
             tokenService.saveToken(res.token);
             localStorage.setItem(USER_ID_KEY, JSON.stringify(res.userId));
             toast.success('Registered successfully');
-            navigate('/user/welcome');
+            setUserId(res.userId);
+            navigate('/user/welcome', {
+                state: { from: pathname },
+            });
         } catch (error) {
             toast.error(error?.response?.data?.message || 'Failed to sign up. Please try again.');
         }
     });
+
     return (
         <div>
             <Navbar />
