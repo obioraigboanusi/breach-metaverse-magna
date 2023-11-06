@@ -68,7 +68,7 @@ function UserInterests() {
                     >
                         {isLoading ? 'Processing...' : 'Next'}
                     </button>
-                    <button disabled onClick={() => navigate('/user/home')} className="">
+                    <button disabled={isLoading} onClick={() => navigate('/user/home')} className="">
                         Skip for later
                     </button>
                 </div>
