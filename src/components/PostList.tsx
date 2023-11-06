@@ -1,6 +1,7 @@
 import Tabs, { ITab } from '@components/Tabs';
 import PostCard from './PostCard';
 import { useGetPosts } from '@hooks/useBlogServices';
+import { useSearchParams } from 'react-router-dom';
 
 const tabs: ITab[] = [
     { label: 'Featured', value: 'featured' },
@@ -9,8 +10,10 @@ const tabs: ITab[] = [
 ];
 
 function PostList() {
-    const { data: posts } = useGetPosts();
-    console.log({ posts });
+    const [params] = useSearchParams();
+    const categoryId = params.get('category') || '';
+
+    const { data: posts } = useGetPosts(categoryId);
 
     return (
         <div>

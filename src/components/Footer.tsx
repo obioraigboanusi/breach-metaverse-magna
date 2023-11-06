@@ -23,7 +23,7 @@ function Footer() {
                                     </a>
                                 </li>
                                 {links.map(({ name, url }) => (
-                                    <li>
+                                    <li key={name}>
                                         <Link to={url}>{name}</Link>
                                     </li>
                                 ))}
