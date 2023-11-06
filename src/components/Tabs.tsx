@@ -20,7 +20,7 @@ function Tabs({ tabs, name }: IProps) {
             searchParams.set(name, value);
             setSearchParams(searchParams, { replace: true });
         },
-        [name]
+        [name, searchParams]
     );
 
     useEffect(() => {
@@ -33,7 +33,7 @@ function Tabs({ tabs, name }: IProps) {
         <div>
             <ul className="flex gap-[40px] mb-[-1px]">
                 {tabs.map(({ label, value }: ITab) => (
-                    <li>
+                    <li key={value}>
                         <button
                             className={[
                                 activeTab === value ? 'opacity-100 border-gray-900' : 'opacity-[0.64] border-transparent',

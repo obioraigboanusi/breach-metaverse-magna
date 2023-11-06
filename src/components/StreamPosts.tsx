@@ -1,25 +1,46 @@
-import React from 'react';
+import { WEBSOCKET_URL } from '@config/constants';
+import tokenService from '@services/token.service';
+import { useState, useEffect } from 'react';
+import StreamPostCard from './StreamPostCard';
 
 function StreamPosts() {
-    const streams = Array.from({ length: 20 });
+    const [streamPosts, setStreamPosts] = useState<IPost[]>([]);
+
+    useEffect(() => {
+        const token = tokenService.getToken();
+        if (!token) return;
+        const socket = new WebSocket(`${WEBSOCKET_URL}?token=${token}`);
+
+        socket.onopen = () => {
+            // console.log('WebSocket connection established.');
+        };
+
+        socket.onmessage = (event) => {
+            const message = JSON.parse(event.data);
+            setStreamPosts((prev) => [message, ...prev]);
+            // console.log('Received message:', message);
+        };
+
+        socket.onclose = () => {
+            // console.error('Connection closed');
+        };
+
+        return () => {
+            socket.close();
+        };
+    }, []);
+
     return (
-        <ul className="grid gap-[33px]">
-            {streams.map(() => (
-                <li>
-                    <article>
-                        <h3 className="text-gray font-semibold mb-1">Migrations Series: Canada</h3>
-                        <p className="text-gray-600 mb-1">
-                            I went to boarding school and left pretty early, so I had some experience with losing friends to...
-                        </p>
-                        <div className="flex gap-3 items-center text-xs">
-                            <span>Lota Anidi</span>
-                            <span className="block w-[4px] h-[4px] bg-gray rounded-full" />
-                            <span>12 Dec 2022</span>
-                        </div>
-                    </article>
-                </li>
-            ))}
-        </ul>
+        <>
+            <ul className="grid gap-[33px]">
+                {streamPosts.map((post: IPost) => (
+                    <li key={'live-posts-' + post.id}>
+                        <StreamPostCard post={post} />
+                    </li>
+                ))}
+            </ul>
+            <div>{streamPosts.length === 0 && <p className="text-xs text-grey-600">Live posts will show here when available</p>}</div>
+        </>
     );
 }
 

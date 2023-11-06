@@ -5,7 +5,7 @@ import PostList from '@components/PostList';
 const scrollToTop = () => {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth', // Optional: smooth scrolling animation
+        behavior: 'smooth',
     });
 };
 

@@ -38,7 +38,7 @@ function Sidebar() {
                 <div>
                     <ul className="grid gap-[20px]">
                         {links.map(({ icon, name, path }) => (
-                            <li>
+                            <li key={name}>
                                 <NavLink
                                     to={path}
                                     className={({ isActive }) =>

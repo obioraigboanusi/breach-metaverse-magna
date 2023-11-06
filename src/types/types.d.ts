@@ -19,3 +19,23 @@ interface AuthFormData {
     password: string;
     email: string;
 }
+
+interface IPost {
+    id: number;
+    title: string;
+    content: string;
+    author: {
+        id: number;
+        name: string;
+    };
+    category: {
+        id: number;
+        name: string;
+        icon: string;
+    };
+    series: {
+        id: number;
+        name: string;
+    };
+    createdAt: string;
+}
