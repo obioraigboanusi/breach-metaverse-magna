@@ -1,8 +1,9 @@
+import { BASE_URL } from '@config/constants';
 import tokenService from '@services/token.service';
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: 'https://frontend-test-api.mvm-tech.xyz/api/',
+    baseURL: BASE_URL,
 });
 
 api.interceptors.request.use((config) => {

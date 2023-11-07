@@ -1,4 +1,4 @@
-import api from '@config/api';
+import api from '@services/api.service';
 import apiEndpoints from '@config/apiEndpoints';
 
 export async function saveInterests({ userId, data }: { userId: number; data: { interests: number[] } }): Promise<any> {

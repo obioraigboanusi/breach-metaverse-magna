@@ -1,4 +1,4 @@
-import api from '@config/api';
+import api from '@services/api.service';
 import apiEndpoints from '@config/apiEndpoints';
 
 export async function loginUser(data: AuthFormData): Promise<UserResponse> {
