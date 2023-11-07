@@ -26,7 +26,7 @@ function Navbar() {
                             </Link>
                         </div>
                     )}
-                    {isLoggedIn && (
+                    {!isAuthPath && isLoggedIn && (
                         <div>
                             <Link to="/user/home" className="btn btn-primary">
                                 Dashboard
