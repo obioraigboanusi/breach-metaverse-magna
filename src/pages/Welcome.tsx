@@ -10,7 +10,7 @@ function Welcome() {
             <div className="container pt-[50px]">
                 <div className="flex flex-col items-center ">
                     <div className="relative mb-10 flex flex-col items-center">
-                        <img src={hello} alt="" />
+                        <img src={hello} alt="a boy spraying a welcome flowers with smiles" />
                         <div className="message">
                             <div className="text-[15px] font-medium">Hi! I'm Bev. I'm here to help you get the best out of Breach.</div>
                         </div>

@@ -12,7 +12,7 @@ function Dashboard() {
                         <p className="text-gray-600">Experience the best of Breach</p>
                     </header>
                     <article>
-                        <img src={banner} alt="banner" className="w-full mb-3" />
+                        <img src={banner} alt="how should i check my crypto wallet balance?" className="w-full mb-3" />
                         <h2 className="font-semibold text-[24px] mb-1">How to succeed at long-term investments</h2>
                         <p className="text-gray-600">
                             I recently started contemplating how to apply my carefree mentality to my financial planning. I&apos;ve mainly been

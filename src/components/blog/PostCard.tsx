@@ -7,7 +7,7 @@ function PostCard({ post }) {
     return (
         <div className="post-card grid gap-[28px] group">
             <div className="h-[186px] rounded-2xl border border-gray-300">
-                <img src={imageUrl} alt="" className="w-full h-full max-h-[184px] object-cover object-center rounded-2xl" />
+                <img src={imageUrl} alt={title} className="w-full h-full max-h-[184px] object-cover object-center rounded-2xl" />
             </div>
             <div className="">
                 <p className="uppercase mb-4 text-sm text-gray-600">{series.name}</p>
