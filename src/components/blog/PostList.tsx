@@ -14,7 +14,7 @@ function PostList() {
     const [params] = useSearchParams();
     const categoryId = params.get('category') || '';
 
-    const { data: posts, isLoading } = useGetPosts(categoryId);
+    const { data: posts, isLoading, isError } = useGetPosts(categoryId);
 
     return (
         <div>
@@ -35,6 +35,11 @@ function PostList() {
             </ul>
 
             {posts?.length === 0 && <p className="text-sm text-grey-600">Posts will show here when available</p>}
+            {isError && (
+                <p className="text-sm text-grey-600">
+                    Unable to fetch posts at this time. Please check your internet connection and refresh the browser
+                </p>
+            )}
         </div>
     );
 }

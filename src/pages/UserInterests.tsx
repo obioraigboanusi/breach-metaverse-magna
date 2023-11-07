@@ -11,9 +11,9 @@ import { useSaveInterests } from '@hooks/useUserservices';
 function UserInterests() {
     const navigate = useNavigate();
     const [selectedCategories, setSelectedCategories] = useState<number[]>([]);
-    const { data: categories } = useGetCategories();
+    const { data: categories, isError, isLoading } = useGetCategories();
     const { userId } = useAuth();
-    const { isLoading, mutateAsync } = useSaveInterests();
+    const { isLoading: isSaving, mutateAsync } = useSaveInterests();
 
     const selectCategory = (id: number) => {
         setSelectedCategories((prev) => {
@@ -55,24 +55,31 @@ function UserInterests() {
                 <div className="mt-[40px] max-w-[732px] mx-auto">
                     <ul className="flex flex-wrap gap-[20px] justify-center">
                         {isLoading
-                            ? Array.from({ length: 10 }).map(() => <div className={` animate-pulse rounded-lg h-[38px] w-[25%] bg-gray-300`} />)
+                            ? Array.from({ length: 10 }).map((_, i) => (
+                                  <div key={'interests-item-dummy-' + i} className={` animate-pulse rounded-lg h-[38px] w-[25%] bg-gray-300`} />
+                              ))
                             : categories?.map((category: ICategory) => (
                                   <li key={'interests-item' + category.id}>
                                       <Category category={category} isSelected={selectedCategories.includes(category.id)} onSelect={selectCategory} />
                                   </li>
                               ))}
+                        {isError && (
+                            <p className="text-sm text-grey-600">
+                                Unable to fetch categories at this time. Please check your internet connection and refresh the browser
+                            </p>
+                        )}
                     </ul>
                     {categories?.length === 0 && <p className="text-sm text-grey-600">Categories will show here when available.</p>}
                 </div>
                 <div className="flex flex-col items-center mt-[40px]">
                     <button
-                        disabled={isLoading}
+                        disabled={isSaving || isLoading}
                         onClick={saveCategories}
                         className="btn bg-gray text-white z-50  mb-3 disabled:bg-gray-300 disabled:cursor-not-allowed"
                     >
                         {isLoading ? 'Processing...' : 'Next'}
                     </button>
-                    <button disabled={isLoading} onClick={() => navigate('/user/home')} className="">
+                    <button disabled={isSaving} onClick={() => navigate('/user/home')} className="">
                         Skip for later
                     </button>
                 </div>
